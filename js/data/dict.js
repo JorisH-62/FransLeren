@@ -62,6 +62,13 @@ export const DICT = {
   "avais": "had", "pouvaient": "konden", "claquait": "klapperde", "aurait": "zou hebben", "boulanger": "bakker", "paris": "Parijs", "eiffel": "(tour Eiffel) Eiffeltoren",
   "hmm": "hmm", "mmm": "mmm", "fffff": "(geblaas)", "wouf": "waf", "minou": "Minou (poesje)", "rex": "Rex", "biscotte": "Biscotte (beschuitje!)", "léa": "Léa",
   "josette": "Josette", "sophie": "Sophie", "hugo": "Hugo", "marguerite": "Marguerite (ook: madeliefje)", "dupont": "Dupont", "martin": "Martin",
+  "demande": "vraagt", "sûr": "zeker (bien sûr = natuurlijk)", "noire": "zwart", "noir": "zwart / donker", "mange": "eet", "habite": "woont", "coup": "klap / keer",
+  "dame": "dame", "accord": "(d'accord) oké", "chocolat": "chocolade", "seulement": "alleen / slechts", "tante": "tante", "oncle": "oom", "cousin": "neef", "cousine": "nicht",
+  "haha": "haha", "devenu": "geworden", "devenue": "geworden", "faisaient": "deden / maakten", "prendre": "nemen", "photo": "foto", "voiture": "auto", "sport": "sport",
+  "quelle": "welke / wat een", "quel": "welk / wat een", "euro": "euro", "rire": "lachen", "ri": "gelachen", "savez": "weten (jullie / u)", "appelle": "heet / roept / belt",
+  "restaurant": "restaurant", "midi": "12 uur 's middags", "sauf": "behalve", "important": "belangrijk", "j": "J (le jour J = de grote dag)", "onze": "elf",
+  "parti": "vertrokken", "partie": "vertrokken / deel", "autour": "rondom", "finalement": "uiteindelijk", "vin": "wijn", "mariage": "bruiloft / huwelijk",
+  "poisson": "vis", "dessert": "toetje", "prochaine": "volgende", "prochain": "volgende",
   // uitroepen
   "oh": "o", "ah": "ah", "aïe": "au!", "zut": "verdorie", "bravo": "bravo", "merci": "dank je", "bonjour": "goedendag", "bonsoir": "goedenavond", "salut": "hoi",
   "pardon": "sorry / pardon", "attention": "pas op", "voyons": "kom nou / eens kijken", "bah": "tja / bah", "eh": "hé", "hein": "hè?", "ben": "nou", "bon": "goed / nou",

@@ -1,6 +1,7 @@
+import more from './stories2.js';
 // Originele, grappige verhalen. Elke pagina: { pic, fr, nl }. glossary: extra woorden voor tik-om-te-vertalen.
 // Bij quizvragen is de EERSTE optie de juiste.
-export const STORIES = [
+const BASE = [
 // ═════════════════════════════════════════════
 {
   id: 'minou', level: 'A1', emoji: '🐱', color: '#ffe0b8', minutes: 4,
@@ -253,3 +254,6 @@ export const STORIES = [
   ],
 },
 ];
+
+const ORDER = { A1: 1, A2: 2, B1: 3 };
+export const STORIES = [...BASE, ...more].sort((a, b) => ORDER[a.level] - ORDER[b.level]);

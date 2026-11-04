@@ -284,9 +284,9 @@ const renderers = {
         <button class="btn yellow" id="play">🔊 Afspelen</button>
         <button class="btn ghost small" id="slow">🐌 Langzaam</button>
       </div>`;
-    $('#play', body).onclick = () => speech.say(ex.fr);
+    $('#play', body).onclick = () => speech.say(ex.fr, { rate: ex.rate });
     $('#slow', body).onclick = () => speech.say(ex.fr, { rate: 0.6 });
-    setTimeout(() => speech.say(ex.fr), 300);
+    setTimeout(() => speech.say(ex.fr, { rate: ex.rate }), 300);
     const c = choiceButtons(body, ex.options, btn);
     return {
       check() {
@@ -303,9 +303,9 @@ const renderers = {
         <button class="btn yellow" id="play">🔊 Afspelen</button>
         <button class="btn ghost small" id="slow">🐌 Langzaam</button>
       </div>`;
-    $('#play', body).onclick = () => speech.say(ex.fr);
+    $('#play', body).onclick = () => speech.say(ex.fr, { rate: ex.rate });
     $('#slow', body).onclick = () => speech.say(ex.fr, { rate: 0.6 });
-    setTimeout(() => speech.say(ex.fr), 300);
+    setTimeout(() => speech.say(ex.fr, { rate: ex.rate }), 300);
     const input = textInput(body, btn, 'Wat hoor je?');
     return {
       check() {

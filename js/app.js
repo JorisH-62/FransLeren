@@ -28,6 +28,8 @@ const routes = [
   [/^\/uitspraak$/, () => import('./views/pronunciation.js'), 'home'],
   [/^\/profiel$/, () => import('./views/profile.js'), 'home'],
   [/^\/mix$/, () => import('./views/mix.js'), 'home'],
+  [/^\/zinnen$/, () => import('./views/phrases.js'), 'home'],
+  [/^\/luisteren$/, () => import('./views/listening.js'), 'home'],
 ];
 
 const app = $('#app');
