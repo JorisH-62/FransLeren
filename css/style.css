@@ -377,3 +377,5 @@ select, input[type="range"] { font: inherit; }
 select { padding: 8px 10px; border-radius: 10px; border: 2px solid var(--line); background: var(--card); color: var(--ink); }
 .hidden { display: none !important; }
 kbd { background: var(--bg2); border-radius: 6px; padding: 1px 6px; font-family: inherit; font-weight: 800; }
+.theory td .fr { white-space: nowrap; }
+.table-wrap { margin: 0 -4px; padding: 0 4px; }
