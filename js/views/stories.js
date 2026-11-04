@@ -35,7 +35,7 @@ function library(root) {
     <h1>📚 Verhalen</h1>
     <p class="muted">Grappige verhaaltjes in eenvoudig Frans. Tik op een woord voor de vertaling, laat het voorlezen en doe daarna de quiz.</p>
     ${LEVELS.map(lv => {
-      const list = STORIES.filter(st => st.level === lv);
+      const list = STORIES.filter(st => st.level === lv && st.kind !== 'song');
       if (!list.length) return '';
       return `<div class="unit-head"><span class="pill ${lv.toLowerCase()}">${lv}</span><h2>${{ A1: 'Makkelijk', A2: 'Gemiddeld', B1: 'Uitdagend' }[lv]}</h2></div>
       <div class="book-grid">${list.map(st => {
@@ -47,6 +47,13 @@ function library(root) {
         </a>`;
       }).join('')}</div>`;
     }).join('')}
+    <div class="unit-head"><span class="pill">🎵</span><h2>Kinderliedjes</h2></div>
+    <p class="small muted" style="margin-top:-4px">Traditionele Franse liedjes die elke Franse familie kent. Zing mee met de kinderen!</p>
+    <div class="book-grid">${STORIES.filter(st => st.kind === 'song').map(st => {
+      const p = s.stories[st.id];
+      return `<a class="book" href="#/verhaal/${st.id}"><div class="cover" style="background:${st.color}">${st.emoji}</div>
+        <div class="bt"><b>${esc(st.title)}</b><span>${esc(st.nl)}</span><br><span>🎵 liedje${p?.read ? ' · ✅' : ''}</span></div></a>`;
+    }).join('')}</div>
   `;
 }
 
@@ -94,7 +101,7 @@ async function reader(root, id) {
         </div>`).join('')}
     </div>
     <button class="btn block ghost" id="addall" style="margin-bottom:12px">➕ Woorden uit dit verhaal naar mijn flashcards</button>
-    <button class="btn block green" id="finish">✅ Uit! Naar de quiz</button>
+    <button class="btn block green" id="finish">✅ ${st.kind === 'song' ? 'Gezongen! Naar de quiz' : 'Uit! Naar de quiz'}</button>
   `;
 
   const readPara = (i, rate) => {
