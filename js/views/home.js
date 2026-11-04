@@ -111,13 +111,21 @@ export function render(root) {
   `;
 
   // Woord + uitdrukking van de dag (lui laden)
-  Promise.all([import('../data/vocab.js'), import('../data/idioms.js')]).then(([v, i]) => {
+  Promise.all([import('../data/vocab.js'), import('../data/idioms.js'), import('../data/stories.js')]).then(([v, i, st]) => {
+    const unread = st.STORIES.filter(x => !s.stories[x.id]?.read && x.kind !== 'song');
+    const lvl = s.settings.startUnit || 'A1';
+    const pool = unread.filter(x => x.level === lvl).length ? unread.filter(x => x.level === lvl) : unread.length ? unread : st.STORIES;
+    const story = pool[dayIndex(pool.length, 4)];
     const words = v.DECKS.flatMap(d => d.words);
     const w = words[dayIndex(words.length, 1)];
     const idiom = i.IDIOMS[dayIndex(i.IDIOMS.length, 2)];
     const el = root.querySelector('#daily');
     if (!el) return;
     el.innerHTML = `
+      <a class="card tile" href="#/verhaal/${story.id}" style="flex-direction:row;align-items:center;gap:14px">
+        <span style="font-size:2.2rem;width:56px;height:56px;display:grid;place-items:center;border-radius:14px;background:${story.color}">${story.emoji}</span>
+        <span style="flex:1"><span class="small muted">📖 Verhaal van de dag · ${story.level}</span><br><b>${esc(story.title)}</b><br><span class="small muted">${esc(story.nl)}</span></span>
+      </a>
       <div class="card wotd">
         <div class="small muted">📅 Woord van de dag</div>
         <div class="row" style="margin-top:4px"><span class="fr">${esc(w[0])}</span>${speakBtn(w[0])}</div>

@@ -2,7 +2,9 @@ import a1 from './lessons-a1.js';
 import a2 from './lessons-a2.js';
 import b1 from './lessons-b1.js';
 import { EXTRA_A1, EXTRA_A2, EXTRA_B1 } from './lessons-extra.js';
-import EXTRA_EX from './extra-exercises.js';
+import EX1 from './extra-exercises.js';
+import EX2 from './extra-exercises2.js';
+const EXTRA_EX = { ...EX1, ...EX2 };
 
 export const UNITS = [
   { id: 'A1', name: 'A1 — De basis', desc: 'Voorstellen, familie, eten, de belangrijkste werkwoorden.', cls: 'a1' },
