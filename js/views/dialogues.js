@@ -36,7 +36,8 @@ function adapt(text) {
   if (store.setting('gender') !== 'f') return text;
   return text
     .replace(/\bcontent\b/g, 'contente').replace(/\bEnchanté\b/g, 'Enchantée').replace(/\bfatigué\b/g, 'fatiguée')
-    .replace(/\bnéerlandais\b/g, 'néerlandaise').replace(/\bvenu\b/g, 'venue').replace(/\bun ingénieur\b/g, 'une ingénieure');
+    .replace(/\bnéerlandais\b/g, 'néerlandaise').replace(/\bvenu\b/g, 'venue').replace(/\bun ingénieur\b/g, 'une ingénieure')
+    .replace(/je suis le gendre/g, 'je suis la belle-fille').replace(/\bJe suis néerlandais\b/g, 'Je suis néerlandaise');
 }
 // Wat de familie tegen jou zegt, aangepast als je een vrouw bent
 function adaptNpc(text) {
@@ -49,7 +50,8 @@ function adaptNpc(text) {
     .replace(/il est diplomate/g, 'elle est diplomate').replace(/C'est toi, le Hollandais/g, 'C\'est toi, la Hollandaise')
     .replace(/kleinzoon/g, 'kleindochter').replace(/Arme jongen/g, 'Arm meisje').replace(/\bjongen\b/g, 'meid').replace(/Fransman/g, 'Française')
     .replace(/hij is aanhankelijk, die Hollander/g, 'zij is aanhankelijk, die Hollandse').replace(/Hij snapt het tenminste/g, 'Zij snapt het tenminste')
-    .replace(/hij is diplomatiek/g, 'zij is diplomatiek').replace(/Ben jij de Hollander/g, 'Ben jij de Hollandse');
+    .replace(/hij is diplomatiek/g, 'zij is diplomatiek').replace(/Ben jij de Hollander/g, 'Ben jij de Hollandse')
+    .replace(/Le Hollandais !/g, 'La Hollandaise !').replace(/De Hollander!/g, 'De Hollandse!').replace(/Vous êtes drôle, vous/g, 'Vous êtes drôle, vous');
 }
 function personalize(text) {
   const name = store.setting('name');

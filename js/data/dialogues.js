@@ -1,5 +1,6 @@
 import more from './dialogues2.js';
 import more3 from './dialogues3.js';
+import more4 from './dialogues4.js';
 // Gespreksoefeningen met de (schoon)familie.
 // Stappen:
 //  { npc: 'fr', nl: '...', who?: 'sleutel' }                    — iemand zegt iets
@@ -353,4 +354,4 @@ const BASE = [
 ];
 
 const ORDER = { A1: 1, A2: 2, B1: 3 };
-export const DIALOGUES = [...BASE, ...more, ...more3].sort((a, b) => ORDER[a.level] - ORDER[b.level]);
+export const DIALOGUES = [...BASE, ...more, ...more3, ...more4].sort((a, b) => ORDER[a.level] - ORDER[b.level]);
