@@ -4,6 +4,7 @@ import songs from './songs.js';
 import more4 from './stories4.js';
 import more5 from './stories5.js';
 import more6 from './stories6.js';
+import more7 from './stories7.js';
 // Originele, grappige verhalen. Elke pagina: { pic, fr, nl }. glossary: extra woorden voor tik-om-te-vertalen.
 // Bij quizvragen is de EERSTE optie de juiste.
 const BASE = [
@@ -261,4 +262,4 @@ const BASE = [
 ];
 
 const ORDER = { A1: 1, A2: 2, B1: 3 };
-export const STORIES = [...BASE, ...more, ...more3, ...more4, ...more5, ...more6, ...songs].sort((a, b) => ORDER[a.level] - ORDER[b.level]);
+export const STORIES = [...BASE, ...more, ...more3, ...more4, ...more5, ...more6, ...more7, ...songs].sort((a, b) => ORDER[a.level] - ORDER[b.level]);

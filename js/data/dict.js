@@ -77,6 +77,8 @@ export const DICT = {
   "quarante": "veertig", "appeler": "bellen / roepen", "voyez": "ziet (u/jullie)",
   "aime": "houdt van / vindt leuk", "aimes": "houdt van", "trouve": "vindt", "pouf": "poef", "huit": "acht", "neuf": "negen / nieuw",
   "seconde": "seconde", "plaît": "(s'il te plaît) alsjeblieft", "blanc": "wit", "dès": "vanaf (dès que = zodra)", "juste": "precies / alleen", "côté": "kant (à côté de = naast)",
+  "délicieux": "heerlijk", "café": "koffie / café", "preserve": "(Engels) bewaren", "parler": "praten", "téléphone": "telefoon", "euh": "eh", "train": "trein (en train de = bezig met)",
+  "arriver": "aankomen", "whatsapp": "WhatsApp", "rouge": "rood", "faisant": "doend", "joyeux": "vrolijk (joyeux anniversaire = gefeliciteerd)", "anniversaire": "verjaardag", "moment": "moment",
   // uitroepen
   "oh": "o", "ah": "ah", "aïe": "au!", "zut": "verdorie", "bravo": "bravo", "merci": "dank je", "bonjour": "goedendag", "bonsoir": "goedenavond", "salut": "hoi",
   "pardon": "sorry / pardon", "attention": "pas op", "voyons": "kom nou / eens kijken", "bah": "tja / bah", "eh": "hé", "hein": "hè?", "ben": "nou", "bon": "goed / nou",
