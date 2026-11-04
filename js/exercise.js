@@ -372,7 +372,7 @@ const renderers = {
         <p class="small muted" id="heard">${speech.canListen() ? 'Tik op de microfoon en spreek.' : 'Spraakherkenning werkt niet in deze browser. Zeg de zin hardop en tik op Controleer.'}</p>
       </div>`;
     let best = 0, heard = '';
-    if (!speech.canListen()) btn.disabled = false;
+    btn.disabled = false; // altijd verder kunnen, ook zonder microfoon
     $('#mic', body).onclick = () => {
       const mic = $('#mic', body);
       mic.classList.add('listening');
