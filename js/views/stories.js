@@ -93,6 +93,7 @@ async function reader(root, id) {
           </div>
         </div>`).join('')}
     </div>
+    <button class="btn block ghost" id="addall" style="margin-bottom:12px">➕ Woorden uit dit verhaal naar mijn flashcards</button>
     <button class="btn block green" id="finish">✅ Uit! Naar de quiz</button>
   `;
 
@@ -157,6 +158,17 @@ async function reader(root, id) {
     showNl = !showNl;
     $$('.trans', root).forEach(t => t.hidden = !showNl);
     $('#togglenl', root).textContent = showNl ? '🇳🇱 Vertaling verbergen' : '🇳🇱 Vertaling tonen';
+  };
+  $('#addall', root).onclick = () => {
+    let n = 0;
+    for (const [fr, nl] of Object.entries(st.glossary)) {
+      if (/^[A-ZÀ-Ý]/.test(nl) && nl.toLowerCase().startsWith(fr.slice(0, 3))) continue; // namen overslaan
+      if (fr.length < 3) continue;
+      if (srs.addCard(fr, nl, 'verhaal-' + st.id)) n++;
+      if (n >= 40) break;
+    }
+    toast(n ? `${n} woorden toegevoegd aan je flashcards 🃏` : 'Alle woorden staan er al in ✅');
+    $('#addall', root).disabled = true;
   };
   $('#finish', root).onclick = () => {
     const first = !store.get().stories[st.id]?.read;
