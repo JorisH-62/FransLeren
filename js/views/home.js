@@ -99,6 +99,8 @@ export function render(root) {
       <a class="tile" href="#/mix"><span class="te">🎲</span><b>Snelle mix</b><span class="muted">5 min. van alles</span></a>
       <a class="tile" href="#/zinnen"><span class="te">📖</span><b>Zinnenboek</b><span class="muted">Handige zinnen</span></a>
       <a class="tile" href="#/luisteren"><span class="te">🎧</span><b>Luisteren</b><span class="muted">Verstaan op tempo</span></a>
+      <a class="tile" href="#/spreken"><span class="te">🎤</span><b>Spreektrainer</b><span class="muted">Zeg het hardop</span></a>
+      <a class="tile" href="#/familie"><span class="te">👨‍👩‍👧</span><b>Mijn familie</b><span class="muted">Stel ze voor in het Frans</span></a>
       <a class="tile" href="#/spiekbriefje"><span class="te">📝</span><b>Spiekbriefje</b><span class="muted">Alle regels kort</span></a>
       <a class="tile" href="#/profiel"><span class="te">🏅</span><b>Badges</b><span class="muted">& instellingen</span></a>
     </div>

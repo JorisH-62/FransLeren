@@ -16,7 +16,8 @@ const DEFAULT = {
   settings: { rate: 0.9, voice: '', showNl: true, theme: 'auto', sounds: true },
   history: {},            // 'YYYY-MM-DD' -> xp
   mistakes: [],
-  tests: {},              // niveau -> beste %           // oefeningen die fout gingen
+  tests: {},
+  family: [],              // niveau -> beste %           // oefeningen die fout gingen
   onboarded: false,
 };
 

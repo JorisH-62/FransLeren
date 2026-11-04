@@ -14,6 +14,7 @@ function list(root) {
   const s = store.get();
   root.innerHTML = `
     <h1>💬 Gesprekken</h1>
+    <a class="card tile" href="#/spreken" style="flex-direction:row;align-items:center;gap:12px"><span class="te">🎤</span><span style="flex:1"><b>Spreektrainer</b><br><span class="small muted">8 zinnen hardop oefenen</span></span><span>›</span></a>
     <p class="muted">Oefen echte situaties met de (schoon)familie. Kies het juiste antwoord, of zeg de zin hardop. Fout? Geen probleem: je krijgt uitleg en mag opnieuw.</p>
     ${LEVELS.map(lv => {
       const ls = DIALOGUES.filter(d => d.level === lv);
