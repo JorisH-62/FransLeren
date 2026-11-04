@@ -38,6 +38,19 @@ function adapt(text) {
     .replace(/\bcontent\b/g, 'contente').replace(/\bEnchanté\b/g, 'Enchantée').replace(/\bfatigué\b/g, 'fatiguée')
     .replace(/\bnéerlandais\b/g, 'néerlandaise').replace(/\bvenu\b/g, 'venue').replace(/\bun ingénieur\b/g, 'une ingénieure');
 }
+// Wat de familie tegen jou zegt, aangepast als je een vrouw bent
+function adaptNpc(text) {
+  if (store.setting('gender') !== 'f' || !text) return text;
+  return text
+    .replace(/mon petit-fils/g, 'ma petite-fille').replace(/Il apprend le français/g, 'Elle apprend le français')
+    .replace(/Mon pauvre/g, 'Ma pauvre').replace(/mon grand\b/g, 'ma grande').replace(/Mon chéri/g, 'Ma chérie').replace(/mon chéri/g, 'ma chérie')
+    .replace(/devenu un vrai Français/g, 'devenue une vraie Française').replace(/comme un vrai Français/g, 'comme une vraie Française')
+    .replace(/il est affectueux, le Hollandais/g, 'elle est affectueuse, la Hollandaise').replace(/Lui, il a compris/g, 'Elle, elle a compris')
+    .replace(/il est diplomate/g, 'elle est diplomate').replace(/C'est toi, le Hollandais/g, 'C\'est toi, la Hollandaise')
+    .replace(/kleinzoon/g, 'kleindochter').replace(/Arme jongen/g, 'Arm meisje').replace(/\bjongen\b/g, 'meid').replace(/Fransman/g, 'Française')
+    .replace(/hij is aanhankelijk, die Hollander/g, 'zij is aanhankelijk, die Hollandse').replace(/Hij snapt het tenminste/g, 'Zij snapt het tenminste')
+    .replace(/hij is diplomatiek/g, 'zij is diplomatiek').replace(/Ben jij de Hollander/g, 'Ben jij de Hollandse');
+}
 function personalize(text) {
   const name = store.setting('name');
   return name ? text.replace(/\bJoris\b/g, name) : text;
@@ -94,6 +107,7 @@ function play(root, id) {
   }
 
   async function npcSay(fr, nl, who) {
+    fr = personalize(adaptNpc(fr)); nl = personalize(adaptNpc(nl));
     const c = d.cast[who] || d.cast[lastWho];
     lastWho = who || lastWho;
     const t = bubble('', `<span class="av">${c.av}</span><div class="bub"><div class="typing"><i></i><i></i><i></i></div></div>`);

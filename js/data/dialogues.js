@@ -1,10 +1,11 @@
+import more from './dialogues2.js';
 // Gespreksoefeningen met de (schoon)familie.
 // Stappen:
 //  { npc: 'fr', nl: '...', who?: 'sleutel' }                    — iemand zegt iets
 //  { choose: [ { fr, nl, ok: true, re?: 'fr', reNl?: '' }, { fr, nl, why: 'uitleg waarom niet' } ] }
 //  { say: 'fr', nl: '...' }                                       — zeg/typ deze zin zelf
 //  { note: 'tip in het Nederlands' }
-export const DIALOGUES = [
+const BASE = [
 // ═════════════════════════════════════════════
 {
   id: 'aankomst', level: 'A1', emoji: '🚪', title: 'Aankomst bij de schoonfamilie', sub: 'Begroeten, voorstellen, cadeautje geven',
@@ -349,3 +350,6 @@ export const DIALOGUES = [
   ],
 },
 ];
+
+const ORDER = { A1: 1, A2: 2, B1: 3 };
+export const DIALOGUES = [...BASE, ...more].sort((a, b) => ORDER[a.level] - ORDER[b.level]);

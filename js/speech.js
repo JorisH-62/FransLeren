@@ -39,8 +39,11 @@ export function say(text, opts = {}) {
     const btn = opts.button;
     if (btn) btn.classList.add('speaking');
     if (opts.onword) u.onboundary = e => { if (e.name === 'word' || e.name === undefined) opts.onword(e.charIndex); };
-    const done = () => { if (btn) btn.classList.remove('speaking'); opts.onend?.(); resolve(); };
+    let finished = false;
+    const done = () => { if (finished) return; finished = true; clearTimeout(guard); if (btn) btn.classList.remove('speaking'); opts.onend?.(); resolve(); };
     u.onend = done; u.onerror = done;
+    // vangnet: sommige browsers sturen nooit een 'end'-event
+    const guard = setTimeout(done, 2500 + text.length * 110 / (u.rate || 1));
     speechSynthesis.speak(u);
   });
 }
