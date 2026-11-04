@@ -26,6 +26,20 @@ export function render(root) {
   const startU = order[s.settings.startUnit || 'A1'];
   const next = LESSONS.find(l => !s.lessons[l.id] && order[l.unit] >= startU) || LESSONS.find(l => !s.lessons[l.id]);
   const nMistakes = store.mistakes().length;
+  const plan = () => {
+    const tasks = [
+      { done: store.doneToday(s.lessons), e: '✏️', t: store.doneToday(s.lessons) ? 'Les van vandaag gedaan' : next ? `Les: ${next.title}` : 'Herhaal een les', href: next ? `#/les/${next.id}` : '#/leerpad' },
+      { done: stats.total > 0 && stats.due === 0, e: '🃏', t: stats.total ? (stats.due ? `Herhaal ${stats.due} kaarten` : 'Kaarten herhaald') : 'Begin een woordenset', href: stats.total ? '#/woorden/herhaal' : '#/woorden' },
+      { done: store.doneToday(s.stories) || store.doneToday(s.dialogues), e: '📖', t: 'Lees een verhaal of voer een gesprek', href: Object.keys(s.stories).length <= Object.keys(s.dialogues).length ? '#/verhalen' : '#/gesprekken' },
+    ];
+    const n = tasks.filter(x => x.done).length;
+    return `<div class="card">
+      <div class="row"><b>📋 Plan voor vandaag</b><span class="spacer"></span><span class="small muted">${n}/3</span></div>
+      ${tasks.map(x => `<a href="${x.href}" class="row" style="text-decoration:none;color:inherit;padding:8px 0;border-bottom:1px dashed var(--line)">
+        <span style="font-size:1.2rem">${x.done ? '✅' : x.e}</span><span style="flex:1;${x.done ? 'text-decoration:line-through;opacity:.6' : ''}">${esc(x.t)}</span>${x.done ? '' : '<span class="muted">›</span>'}</a>`).join('')}
+      ${n === 3 ? '<p class="small" style="margin:8px 0 0">🎉 Alles gedaan voor vandaag! Gaston is apetrots.</p>' : ''}
+    </div>`;
+  };
   const hour = new Date().getHours();
   const greet = hour < 6 ? 'Bonne nuit' : hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
   const goalPct = Math.min(100, Math.round((s.todayXp / s.dailyGoal) * 100));
@@ -57,6 +71,8 @@ export function render(root) {
       <span style="flex:1"><span class="small muted">${doneCount ? 'Ga verder met' : 'Begin hier'} · ${next.unit}</span><br><b>${esc(next.title)}</b></span>
       <span class="btn small">Start</span>
     </a>` : `<div class="card center">🏆 Je hebt alle lessen gedaan! Herhaal ze voor 3 sterren.</div>`}
+
+    ${plan()}
 
     ${stats.due ? `
     <a class="card tile" href="#/woorden/herhaal" style="flex-direction:row;align-items:center;gap:14px">

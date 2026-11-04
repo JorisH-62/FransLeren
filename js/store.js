@@ -98,12 +98,12 @@ export function setLesson(id, stars, pct) {
 }
 
 export function setStory(id, data) {
-  state.stories[id] = { ...(state.stories[id] || {}), ...data };
+  state.stories[id] = { ...(state.stories[id] || {}), ...data, at: Date.now() };
   save(); emit();
 }
 
 export function setDialogue(id, data) {
-  state.dialogues[id] = { ...(state.dialogues[id] || {}), ...data };
+  state.dialogues[id] = { ...(state.dialogues[id] || {}), ...data, at: Date.now() };
   save(); emit();
 }
 
@@ -179,4 +179,9 @@ export function removeMistake(ex) {
 }
 export function mistakes() {
   return (state.mistakes || []).map(m => { try { return { ...JSON.parse(m.key), _mistake: true }; } catch { return null; } }).filter(Boolean);
+}
+
+export function doneToday(obj) {
+  const start = new Date(); start.setHours(0, 0, 0, 0);
+  return Object.values(obj || {}).some(x => x && x.at >= start.getTime());
 }
