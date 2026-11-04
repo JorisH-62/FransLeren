@@ -38,14 +38,14 @@ function adapt(text) {
   return text
     .replace(/\bcontent\b/g, 'contente').replace(/\bEnchanté\b/g, 'Enchantée').replace(/\bfatigué\b/g, 'fatiguée')
     .replace(/\bnéerlandais\b/g, 'néerlandaise').replace(/\bvenu\b/g, 'venue').replace(/\bun ingénieur\b/g, 'une ingénieure')
-    .replace(/je suis le gendre/g, 'je suis la belle-fille').replace(/\bJe suis néerlandais\b/g, 'Je suis néerlandaise');
+    .replace(/je suis le gendre/g, 'je suis la belle-fille').replace(/je ne suis pas très bon !/g, 'je ne suis pas très bonne !').replace(/\bJe suis néerlandais\b/g, 'Je suis néerlandaise');
 }
 // Wat de familie tegen jou zegt, aangepast als je een vrouw bent
 function adaptNpc(text) {
   if (store.setting('gender') !== 'f' || !text) return text;
   return text
     .replace(/mon petit-fils/g, 'ma petite-fille').replace(/Il apprend le français/g, 'Elle apprend le français')
-    .replace(/Mon pauvre/g, 'Ma pauvre').replace(/Un vrai Français, celui-là/g, 'Une vraie Française, celle-là').replace(/un connaisseur/g, 'une connaisseuse').replace(/Tu t'es bien régalé \?/g, "Tu t'es bien régalée ?").replace(/Merci d'être venu !/g, "Merci d'être venue !").replace(/Oh, flatteur !/g, 'Oh, flatteuse !').replace(/vleier!/g, 'vleister!').replace(/mon grand\b/g, 'ma grande').replace(/Mon chéri/g, 'Ma chérie').replace(/mon chéri/g, 'ma chérie')
+    .replace(/Mon pauvre/g, 'Ma pauvre').replace(/tu es hollandais !/g, 'tu es hollandaise !').replace(/je ne suis pas très bon !/g, 'je ne suis pas très bonne !').replace(/Un vrai Français, celui-là/g, 'Une vraie Française, celle-là').replace(/un connaisseur/g, 'une connaisseuse').replace(/Tu t'es bien régalé \?/g, "Tu t'es bien régalée ?").replace(/Merci d'être venu !/g, "Merci d'être venue !").replace(/Oh, flatteur !/g, 'Oh, flatteuse !').replace(/vleier!/g, 'vleister!').replace(/mon grand\b/g, 'ma grande').replace(/Mon chéri/g, 'Ma chérie').replace(/mon chéri/g, 'ma chérie')
     .replace(/devenu un vrai Français/g, 'devenue une vraie Française').replace(/comme un vrai Français/g, 'comme une vraie Française')
     .replace(/il est affectueux, le Hollandais/g, 'elle est affectueuse, la Hollandaise').replace(/Lui, il a compris/g, 'Elle, elle a compris')
     .replace(/il est diplomate/g, 'elle est diplomate').replace(/C'est toi, le Hollandais/g, 'C\'est toi, la Hollandaise')
