@@ -1,6 +1,7 @@
 import a1 from './lessons-a1.js';
 import a2 from './lessons-a2.js';
 import b1 from './lessons-b1.js';
+import { EXTRA_A1, EXTRA_A2, EXTRA_B1 } from './lessons-extra.js';
 
 export const UNITS = [
   { id: 'A1', name: 'A1 — De basis', desc: 'Voorstellen, familie, eten, de belangrijkste werkwoorden.', cls: 'a1' },
@@ -8,5 +9,17 @@ export const UNITS = [
   { id: 'B1', name: 'B1 — Echt meepraten', desc: 'Plannen, meningen, beleefd zijn en echte spreektaal.', cls: 'b1' },
 ];
 
-export const LESSONS = [...a1, ...a2, ...b1];
+// Extra lessen op een logische plek invoegen
+function insertAfter(list, afterId, items) {
+  const out = [...list];
+  const i = out.findIndex(l => l.id === afterId);
+  out.splice(i < 0 ? out.length : i + 1, 0, ...items);
+  return out;
+}
+
+const A1 = insertAfter(insertAfter(a1, 'a1-etre', [EXTRA_A1[1]]), 'a1-bezit', [EXTRA_A1[0]]);
+const A2 = insertAfter(a2, 'a2-vergelijken', EXTRA_A2);
+const B1 = insertAfter(b1, 'b1-mening', EXTRA_B1);
+
+export const LESSONS = [...A1, ...A2, ...B1];
 export const byId = id => LESSONS.find(l => l.id === id);

@@ -15,6 +15,8 @@ const DEFAULT = {
   badges: {},
   settings: { rate: 0.9, voice: '', showNl: true, theme: 'auto', sounds: true },
   history: {},            // 'YYYY-MM-DD' -> xp
+  mistakes: [],           // oefeningen die fout gingen
+  onboarded: false,
 };
 
 let state = load();
@@ -153,4 +155,28 @@ export function level(xp = state.xp) {
   const [min, name, emoji] = levels[i];
   const next = levels[i + 1]?.[0] ?? null;
   return { n: i + 1, name, emoji, min, next };
+}
+
+// ---- Fouten bijhouden ----
+function mistakeKey(ex) {
+  const clean = {};
+  for (const k of Object.keys(ex).sort()) if (!k.startsWith('_')) clean[k] = ex[k];
+  return JSON.stringify(clean);
+}
+export function addMistake(ex) {
+  const key = mistakeKey(ex);
+  const list = state.mistakes || (state.mistakes = []);
+  const i = list.findIndex(m => m.key === key);
+  if (i >= 0) { list[i].n++; list[i].at = Date.now(); }
+  else list.push({ key, n: 1, at: Date.now() });
+  if (list.length > 80) list.splice(0, list.length - 80);
+  save();
+}
+export function removeMistake(ex) {
+  const key = mistakeKey(ex);
+  state.mistakes = (state.mistakes || []).filter(m => m.key !== key);
+  save();
+}
+export function mistakes() {
+  return (state.mistakes || []).map(m => { try { return { ...JSON.parse(m.key), _mistake: true }; } catch { return null; } }).filter(Boolean);
 }

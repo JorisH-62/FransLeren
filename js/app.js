@@ -29,6 +29,8 @@ const routes = [
   [/^\/profiel$/, () => import('./views/profile.js'), 'home'],
   [/^\/mix$/, () => import('./views/mix.js'), 'home'],
   [/^\/zinnen$/, () => import('./views/phrases.js'), 'home'],
+  [/^\/welkom$/, () => import('./views/welcome.js'), 'home'],
+  [/^\/fouten$/, () => import('./views/mistakes.js'), 'home'],
   [/^\/luisteren$/, () => import('./views/listening.js'), 'home'],
 ];
 

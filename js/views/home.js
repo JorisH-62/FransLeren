@@ -21,7 +21,11 @@ export function render(root) {
   const s = store.get();
   const lvl = store.level();
   const stats = srs.stats();
-  const next = LESSONS.find(l => !s.lessons[l.id]);
+  if (!s.onboarded && !Object.keys(s.lessons).length) { location.hash = '#/welkom'; return; }
+  const order = { A1: 0, A2: 1, B1: 2 };
+  const startU = order[s.settings.startUnit || 'A1'];
+  const next = LESSONS.find(l => !s.lessons[l.id] && order[l.unit] >= startU) || LESSONS.find(l => !s.lessons[l.id]);
+  const nMistakes = store.mistakes().length;
   const hour = new Date().getHours();
   const greet = hour < 6 ? 'Bonne nuit' : hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
   const goalPct = Math.min(100, Math.round((s.todayXp / s.dailyGoal) * 100));
@@ -59,6 +63,13 @@ export function render(root) {
       <span class="te">🃏</span>
       <span style="flex:1"><b>${stats.due} ${stats.due === 1 ? 'kaart' : 'kaarten'} te herhalen</b><br><span class="muted small">Slim herhalen: precies op tijd, zodat je het niet vergeet.</span></span>
       <span class="btn small green">Herhaal</span>
+    </a>` : ''}
+
+    ${nMistakes ? `
+    <a class="card tile" href="#/fouten" style="flex-direction:row;align-items:center;gap:14px">
+      <span class="te">🎯</span>
+      <span style="flex:1"><b>Oefen je fouten (${nMistakes})</b><br><span class="muted small">Wat je eerder fout had, komt terug tot je het kent.</span></span>
+      <span class="btn small yellow">Oefen</span>
     </a>` : ''}
 
     <div class="grid2" style="margin-bottom:14px">

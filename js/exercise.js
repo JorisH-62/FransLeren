@@ -12,6 +12,7 @@
 //  speak     { fr, nl }                                — zeg de zin hardop
 import { esc, shuffle, check, toast, sound, similarity, $, $$ } from './util.js';
 import * as speech from './speech.js';
+import * as store from './store.js';
 
 const ACCENTS = ['é', 'è', 'ê', 'à', 'â', 'ç', 'ô', 'î', 'û', 'ù', 'ë', 'ï', 'œ', "'"];
 
@@ -66,7 +67,14 @@ export function runExercises(root, exercises, { title = '', onFinish, onQuit } =
 
   function feedback(ex, res, isRetry) {
     const { ok, msg, solution } = res;
-    if (!isRetry) firstTry.set(ex._i, ok);
+    if (!isRetry) {
+      firstTry.set(ex._i, ok);
+      // fouten bewaren om later te herhalen
+      if (!['speak', 'match'].includes(ex.type)) {
+        if (!ok) store.addMistake(ex);
+        else if (ex._mistake) store.removeMistake(ex);
+      }
+    }
     if (ok) { done += isRetry ? 0 : 1; sound('ok'); }
     else {
       sound('bad');
