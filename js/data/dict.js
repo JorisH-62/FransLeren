@@ -72,6 +72,9 @@ export const DICT = {
   "regarder": "kijken", "jardin": "tuin", "arrive": "komt (aan)", "arrivent": "komen (aan)", "mettre": "zetten / leggen", "pois": "erwten", "ratent": "mislukken",
   "place": "plein / plaats", "douze": "twaalf", "arc": "boog", "triomphe": "triomf", "france": "Frankrijk", "vie": "leven", "donne": "geeft", "parle": "praat / spreekt",
   "meilleur": "beste / beter", "meilleure": "beste / beter",
+  "fête": "feest", "kevin": "Kevin", "comprends": "begrijp", "bisous": "kusjes", "h": "uur (15h = 15 uur)", "auriez": "zou(den) hebben", "dû": "gemoeten",
+  "tourner": "afslaan / draaien", "vaudrait": "zou beter zijn (il vaudrait mieux)", "mieux": "beter", "orange": "sinaasappel / oranje", "sept": "zeven",
+  "quarante": "veertig", "appeler": "bellen / roepen", "voyez": "ziet (u/jullie)",
   // uitroepen
   "oh": "o", "ah": "ah", "aïe": "au!", "zut": "verdorie", "bravo": "bravo", "merci": "dank je", "bonjour": "goedendag", "bonsoir": "goedenavond", "salut": "hoi",
   "pardon": "sorry / pardon", "attention": "pas op", "voyons": "kom nou / eens kijken", "bah": "tja / bah", "eh": "hé", "hein": "hè?", "ben": "nou", "bon": "goed / nou",
