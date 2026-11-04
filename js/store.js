@@ -15,7 +15,8 @@ const DEFAULT = {
   badges: {},
   settings: { rate: 0.9, voice: '', showNl: true, theme: 'auto', sounds: true },
   history: {},            // 'YYYY-MM-DD' -> xp
-  mistakes: [],           // oefeningen die fout gingen
+  mistakes: [],
+  tests: {},              // niveau -> beste %           // oefeningen die fout gingen
   onboarded: false,
 };
 

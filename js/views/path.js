@@ -26,7 +26,12 @@ export function render(root) {
           <span class="lt"><b>${esc(l.title)}</b><span>${esc(l.sub)}</span></span>
           ${p ? `<span class="stars">${stars}</span>` : isNext ? '<span class="pill a2">Volgende</span>' : ''}
         </a>`;
-      }).join('')}`;
+      }).join('')}
+      <a class="lesson-item" href="#/toets/${u.id}" style="border-style:dashed">
+        <span class="le">📜</span>
+        <span class="lt"><b>Eindtoets ${u.id}</b><span>20 vragen uit alle ${u.id}-lessen · haal 80% voor je diploma</span></span>
+        ${s.tests?.[u.id] != null ? `<span class="pill ${s.tests[u.id] >= 80 ? 'done' : ''}">${s.tests[u.id]}%</span>` : ''}
+      </a>`;
     }).join('')}
   `;
 }

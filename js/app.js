@@ -29,6 +29,7 @@ const routes = [
   [/^\/profiel$/, () => import('./views/profile.js'), 'home'],
   [/^\/mix$/, () => import('./views/mix.js'), 'home'],
   [/^\/zinnen$/, () => import('./views/phrases.js'), 'home'],
+  [/^\/toets\/(A1|A2|B1)$/, () => import('./views/test.js'), 'leerpad'],
   [/^\/spiekbriefje$/, () => import('./views/cheatsheet.js'), 'home'],
   [/^\/welkom$/, () => import('./views/welcome.js'), 'home'],
   [/^\/fouten$/, () => import('./views/mistakes.js'), 'home'],

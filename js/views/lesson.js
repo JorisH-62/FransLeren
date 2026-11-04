@@ -57,7 +57,7 @@ function practice(root, lesson) {
   // Volgorde: oefeningen licht schudden, maar 'speak' altijd aan het eind
   const list = lesson.exercises;
   const speak = list.filter(e => e.type === 'speak');
-  const rest = shuffle(list.filter(e => e.type !== 'speak'));
+  const rest = shuffle(list.filter(e => e.type !== 'speak')).slice(0, 11);
   runExercises(root, [...rest, ...speak], {
     onQuit: () => { location.hash = `#/les/${lesson.id}`; },
     onFinish: ({ right, total, pct }) => {
