@@ -30,7 +30,7 @@ function overview(root) {
       Elke kaart komt terug precies wanneer je hem bijna vergeet: eerst na 1 dag, dan 2, 4, 7, 15, 30 dagen…
     </div>
     <h2>Woordensets</h2>
-    ${DECKS.map(d => {
+    ${[...DECKS].sort((a, b) => a.level.localeCompare(b.level)).map(d => {
       const inCards = d.words.filter(([fr]) => cards[fr]).length;
       const learned = d.words.filter(([fr]) => cards[fr]?.box >= 3).length;
       return `<a class="card tile deck-item" href="#/woorden/set/${d.id}" style="flex-direction:row">
@@ -196,7 +196,8 @@ export function quizFromWords(words, n = 10) {
     if (kind === 0) exercises.push({ type: 'mc', q: `Wat betekent <b>${esc(w[0])}</b>?`, options: [w[1], ...others(w).map(o => o[1])], noSay: true });
     else if (kind === 1) exercises.push({ type: 'listen', fr: w[0], options: [w[1], ...others(w).map(o => o[1])] });
     else if (kind === 2) exercises.push({ type: 'mc', q: `Hoe zeg je <b>${esc(w[1])}</b> in het Frans?`, options: [w[0], ...others(w).map(o => o[0])], noSay: true });
-    else exercises.push({ type: 'translate', nl: w[1], answer: [w[0], stripArticle(w[0])] });
+    else if (w[0].includes('↔') || w[0].length > 40) exercises.push({ type: 'mc', q: `Wat betekent <b>${esc(w[0])}</b>?`, options: [w[1], ...others(w).map(o => o[1])], noSay: true });
+    else exercises.push({ type: 'translate', nl: w[1], answer: [w[0], stripArticle(w[0]), ...w[0].split(' / ')] });
   });
   const pairs = shuffle(words.filter(w => !picked.includes(w))).slice(0, 5);
   if (pairs.length >= 4) exercises.splice(Math.floor(exercises.length / 2), 0, { type: 'match', pairs });

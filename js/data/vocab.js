@@ -1,5 +1,6 @@
+import more from './vocab2.js';
 // Woordensets per thema. [Frans, Nederlands]
-export const DECKS = [
+const BASE = [
 {
   id: 'basis', name: 'Onmisbare woordjes', emoji: '⭐', level: 'A1',
   words: [
@@ -203,3 +204,5 @@ export const DECKS = [
   ],
 },
 ];
+
+export const DECKS = [...BASE, ...more];
