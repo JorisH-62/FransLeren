@@ -79,6 +79,26 @@ export function render(root) {
       <button class="btn ghost" id="paste">📥 Plak voortgang (tekst)</button>
       <button class="btn red small" id="reset" style="margin-top:10px">🗑️ Alles wissen</button>
     </div>
+    <h2>❓ Hulp & tips</h2>
+    <div class="card theory">
+      <h3 style="margin-top:0">🗓️ Zo haal je het meeste uit FransLeren</h3>
+      <p><b>Elke dag ±15 minuten</b> werkt beter dan één keer per week een uur. Volg het <i>Plan voor vandaag</i> op de startpagina:</p>
+      <ol>
+        <li><b>Eén les</b> uit het leerpad (lees de uitleg, doe de oefeningen).</li>
+        <li><b>Je kaarten herhalen</b>: de app laat precies zien wat je bijna vergeet.</li>
+        <li><b>Een verhaal of gesprek</b>: hier oefen je wat je geleerd hebt in context.</li>
+      </ol>
+      <p>Heb je een familiebezoek gepland? Oefen de week ervoor extra de <b>Gesprekken</b>, het <b>Zinnenboek</b> en de <b>Spreektrainer</b>, en vul <b>Mijn familie</b> in.</p>
+      <h3>🎤 Spraak en microfoon</h3>
+      <ul>
+        <li><b>Android:</b> gebruik Chrome. Geef toestemming voor de microfoon als daarom gevraagd wordt.</li>
+        <li><b>iPhone:</b> gebruik Safari. Zet bij Instellingen → Safari → Microfoon op "Vraag" of "Sta toe".</li>
+        <li><b>Geen Franse stem?</b> Installeer een Franse stem: Android → Instellingen → Systeem → Taal → Tekst-naar-spraak; iPhone → Instellingen → Toegankelijkheid → Gesproken materiaal → Stemmen → Frans.</li>
+        <li>Spraakherkenning werkt niet? Je kunt altijd typen of op "Gezegd!" tikken.</li>
+      </ul>
+      <h3>💾 Voortgang</h3>
+      <p>Je voortgang staat alleen op dit apparaat. Wil je wisselen tussen telefoon en computer? Gebruik <b>Back-up</b> hierboven.</p>
+    </div>
     <p class="small muted center">FransLeren · gemaakt met ❤️ en een slak 🐌</p>
   `;
 
