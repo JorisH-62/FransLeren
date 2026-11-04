@@ -44,7 +44,7 @@ function adaptNpc(text) {
   if (store.setting('gender') !== 'f' || !text) return text;
   return text
     .replace(/mon petit-fils/g, 'ma petite-fille').replace(/Il apprend le français/g, 'Elle apprend le français')
-    .replace(/Mon pauvre/g, 'Ma pauvre').replace(/mon grand\b/g, 'ma grande').replace(/Mon chéri/g, 'Ma chérie').replace(/mon chéri/g, 'ma chérie')
+    .replace(/Mon pauvre/g, 'Ma pauvre').replace(/Tu t'es bien régalé \?/g, "Tu t'es bien régalée ?").replace(/Merci d'être venu !/g, "Merci d'être venue !").replace(/Oh, flatteur !/g, 'Oh, flatteuse !').replace(/vleier!/g, 'vleister!').replace(/mon grand\b/g, 'ma grande').replace(/Mon chéri/g, 'Ma chérie').replace(/mon chéri/g, 'ma chérie')
     .replace(/devenu un vrai Français/g, 'devenue une vraie Française').replace(/comme un vrai Français/g, 'comme une vraie Française')
     .replace(/il est affectueux, le Hollandais/g, 'elle est affectueuse, la Hollandaise').replace(/Lui, il a compris/g, 'Elle, elle a compris')
     .replace(/il est diplomate/g, 'elle est diplomate').replace(/C'est toi, le Hollandais/g, 'C\'est toi, la Hollandaise')
