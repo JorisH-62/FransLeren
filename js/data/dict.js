@@ -69,6 +69,9 @@ export const DICT = {
   "restaurant": "restaurant", "midi": "12 uur 's middags", "sauf": "behalve", "important": "belangrijk", "j": "J (le jour J = de grote dag)", "onze": "elf",
   "parti": "vertrokken", "partie": "vertrokken / deel", "autour": "rondom", "finalement": "uiteindelijk", "vin": "wijn", "mariage": "bruiloft / huwelijk",
   "poisson": "vis", "dessert": "toetje", "prochaine": "volgende", "prochain": "volgende",
+  "regarder": "kijken", "jardin": "tuin", "arrive": "komt (aan)", "arrivent": "komen (aan)", "mettre": "zetten / leggen", "pois": "erwten", "ratent": "mislukken",
+  "place": "plein / plaats", "douze": "twaalf", "arc": "boog", "triomphe": "triomf", "france": "Frankrijk", "vie": "leven", "donne": "geeft", "parle": "praat / spreekt",
+  "meilleur": "beste / beter", "meilleure": "beste / beter",
   // uitroepen
   "oh": "o", "ah": "ah", "aïe": "au!", "zut": "verdorie", "bravo": "bravo", "merci": "dank je", "bonjour": "goedendag", "bonsoir": "goedenavond", "salut": "hoi",
   "pardon": "sorry / pardon", "attention": "pas op", "voyons": "kom nou / eens kijken", "bah": "tja / bah", "eh": "hé", "hein": "hè?", "ben": "nou", "bon": "goed / nou",

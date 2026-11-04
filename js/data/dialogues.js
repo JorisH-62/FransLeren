@@ -140,7 +140,7 @@ const BASE = [
     ] },
     { npc: 'Et les enfants, ils se sont bien amusés ?', nl: 'En de kinderen, hebben ze zich vermaakt?', who: 'cousine' },
     { choose: [
-      { fr: 'Oui, ils ont joué dans le sable toute la journée.', nl: 'Ja, ze hebben de hele dag in het zand gespeeld.', ok: true, re: 'Et ils ont ramené la moitié de la plage dans la voiture, je parie !', reNl: 'En ze hebben de halve stranden mee de auto in genomen, wedden?' },
+      { fr: 'Oui, ils ont joué dans le sable toute la journée.', nl: 'Ja, ze hebben de hele dag in het zand gespeeld.', ok: true, re: 'Et ils ont ramené la moitié de la plage dans la voiture, je parie !', reNl: 'En ze hebben het halve strand mee de auto in genomen, wedden?' },
       { fr: 'Oui, ils jouent dans le sable demain.', nl: 'Ja, ze spelen morgen in het zand.', why: 'Dat is de toekomst — ze vroeg naar het weekend!' },
     ] },
     { say: 'Oui ! Il y a du sable partout. Et toi, tu as fait quoi ?', nl: 'Ja! Er ligt overal zand. En jij, wat heb jij gedaan?' },
