@@ -4,6 +4,7 @@ import { esc, toast, $ } from '../util.js';
 import * as speech from '../speech.js';
 import { BADGES } from '../badges.js';
 import { LESSONS } from '../data/lessons.js';
+import { makeCode, readCode } from '../sync.js';
 
 export function render(root) {
   const s = store.get();
@@ -70,6 +71,16 @@ export function render(root) {
       <label class="row" style="gap:8px"><input type="checkbox" id="sounds" ${s.settings.sounds ? 'checked' : ''}> Geluidseffecten</label>
     </div>
 
+    <h2>🔄 Overzetten (telefoon ⇄ pc)</h2>
+    <div class="card stack">
+      <p class="small muted" style="margin:0">Maak op het ene apparaat een overzetcode en plak die op het andere. Er gaat niets via een server: de code bevat je voortgang zelf.</p>
+      <button class="btn" id="mkcode">📤 Maak overzetcode</button>
+      <textarea class="answer" id="codeout" rows="3" readonly hidden style="font-size:.8rem;font-family:monospace"></textarea>
+      <div class="row" id="codebtns" hidden><button class="btn small ghost" id="copycode">📋 Kopieer</button><button class="btn small ghost" id="sharecode">📨 Delen</button><span class="small muted" id="codelen"></span></div>
+      <textarea class="answer" id="codein" rows="3" placeholder="Plak hier een overzetcode…" style="font-size:.8rem;font-family:monospace"></textarea>
+      <button class="btn ghost" id="usecode">📥 Gebruik deze code</button>
+    </div>
+
     <h2>💾 Back-up</h2>
     <div class="card stack">
       <p class="small muted" style="margin:0">Je voortgang wordt op dit apparaat bewaard. Wil je wisselen tussen telefoon en computer? Exporteer hier en importeer op het andere apparaat.</p>
@@ -120,6 +131,22 @@ export function render(root) {
   $('#rate', root).onchange = e => { store.setting('rate', +e.target.value); speech.say('Voilà, comme ça.'); };
   $('#theme', root).onchange = e => store.setting('theme', e.target.value);
   $('#sounds', root).onchange = e => store.setting('sounds', e.target.checked);
+
+  $('#mkcode', root).onclick = async () => {
+    const code = await makeCode();
+    const out = $('#codeout', root); out.value = code; out.hidden = false; out.select();
+    $('#codebtns', root).hidden = false; $('#codelen', root).textContent = `${code.length} tekens`;
+    if (!navigator.share) $('#sharecode', root).hidden = true;
+  };
+  $('#copycode', root).onclick = async () => {
+    try { await navigator.clipboard.writeText($('#codeout', root).value); toast('Gekopieerd! 📋'); } catch { $('#codeout', root).select(); toast('Selecteer en kopieer de code'); }
+  };
+  $('#sharecode', root).onclick = () => navigator.share?.({ title: 'FransLeren-voortgang', text: $('#codeout', root).value }).catch(() => {});
+  $('#usecode', root).onclick = async () => {
+    const v = $('#codein', root).value; if (!v.trim()) return toast('Plak eerst een code');
+    if (!confirm('Je voortgang op dit apparaat wordt vervangen door die uit de code. Doorgaan?')) return;
+    try { await readCode(v); toast('Voortgang overgezet! ✅'); render(root); } catch (e) { alert('Dat lukte niet: ' + e.message); }
+  };
 
   $('#export', root).onclick = () => {
     const blob = new Blob([store.exportData()], { type: 'application/json' });
