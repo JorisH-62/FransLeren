@@ -32,6 +32,7 @@ const routes = [
   [/^\/toets\/(A1|A2|B1)$/, () => import('./views/test.js'), 'leerpad'],
   [/^\/spreken$/, () => import('./views/speaking.js'), 'gesprekken'],
   [/^\/familie$/, () => import('./views/family.js'), 'home'],
+  [/^\/ai-gesprek$/, () => import('./views/ai.js'), 'gesprekken'],
   [/^\/plan$/, () => import('./views/plan.js'), 'home'],
   [/^\/vijf$/, () => import('./views/quick.js'), 'home'],
   [/^\/spiekbriefje$/, () => import('./views/cheatsheet.js'), 'home'],
