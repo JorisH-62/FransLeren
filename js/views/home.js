@@ -3,6 +3,8 @@ import * as srs from '../srs.js';
 import { esc, dayIndex } from '../util.js';
 import { LESSONS } from '../data/lessons.js';
 import { speakBtn } from '../speech.js';
+import { PLAN } from '../data/plan.js';
+import { currentWeek, weekProgress } from './plan.js';
 
 const GASTON = [
   'Un escargot qui avance lentement avance quand même. — Ook langzaam kom je er.',
@@ -26,6 +28,17 @@ export function render(root) {
   const startU = order[s.settings.startUnit || 'A1'];
   const next = LESSONS.find(l => !s.lessons[l.id] && order[l.unit] >= startU) || LESSONS.find(l => !s.lessons[l.id]);
   const nMistakes = store.mistakes().length;
+  const sixMonths = () => {
+    if (!s.plan?.start) return `<a class="card tile" href="#/plan" style="flex-direction:row;align-items:center;gap:14px">
+      <span class="te">📅</span><span style="flex:1"><b>Start je 6-maandenplan</b><br><span class="small muted">26 weken, een paar keer per week. Wij plannen, jij leert.</span></span><span class="btn small">Bekijk</span></a>`;
+    const w = currentWeek();
+    const pr = weekProgress(w);
+    const doneWeeks = PLAN.filter(x => weekProgress(x).complete).length;
+    return `<a class="card tile" href="#/plan" style="gap:6px">
+      <div class="row"><span class="te">${w.emoji}</span><span style="flex:1"><span class="small muted">📅 6-maandenplan · week ${w.n} van 26</span><br><b>${esc(w.theme)}</b></span><span class="small muted">${pr.done}/${pr.total}</span></div>
+      <div class="meter"><div style="width:${(pr.done / pr.total) * 100}%"></div></div>
+      <span class="small muted">${doneWeeks} ${doneWeeks === 1 ? 'week' : 'weken'} afgerond</span></a>`;
+  };
   const plan = () => {
     const tasks = [
       { done: store.doneToday(s.lessons), e: '✏️', t: store.doneToday(s.lessons) ? 'Les van vandaag gedaan' : next ? `Les: ${next.title}` : 'Herhaal een les', href: next ? `#/les/${next.id}` : '#/leerpad' },
@@ -54,6 +67,8 @@ export function render(root) {
       <div class="snail-big" aria-hidden="true">🐌</div>
     </div>
 
+    ${sixMonths()}
+
     <div class="card">
       <div class="row"><b>Dagdoel</b><span class="spacer"></span><span class="small muted">${s.todayXp} / ${s.dailyGoal} XP</span></div>
       <div class="goalbar" style="margin-top:8px"><div style="width:${goalPct}%"></div></div>
@@ -65,12 +80,16 @@ export function render(root) {
       <div class="meter"><div style="width:${lvlPct}%;background:var(--purple)"></div></div>
     </div>
 
-    ${next ? `
+    ${s.plan?.start ? '' : next ? `
     <a class="card tile" href="#/les/${next.id}" style="flex-direction:row;align-items:center;gap:14px">
       <span class="te">${next.emoji}</span>
       <span style="flex:1"><span class="small muted">${doneCount ? 'Ga verder met' : 'Begin hier'} · ${next.unit}</span><br><b>${esc(next.title)}</b></span>
       <span class="btn small">Start</span>
     </a>` : `<div class="card center">🏆 Je hebt alle lessen gedaan! Herhaal ze voor 3 sterren.</div>`}
+
+    <a class="card tile" href="#/vijf" style="flex-direction:row;align-items:center;gap:14px;background:linear-gradient(135deg,var(--yellow-soft),var(--card))">
+      <span class="te">⚡</span><span style="flex:1"><b>Weinig tijd? 5 minuten</b><br><span class="small muted">Een paar kaarten + oefeningen van deze week</span></span><span class="btn small yellow">Go</span>
+    </a>
 
     ${plan()}
 

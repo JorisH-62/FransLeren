@@ -17,7 +17,8 @@ const DEFAULT = {
   history: {},            // 'YYYY-MM-DD' -> xp
   mistakes: [],
   tests: {},
-  family: [],              // niveau -> beste %           // oefeningen die fout gingen
+  family: [],
+  plan: { start: null, checks: {} },              // niveau -> beste %           // oefeningen die fout gingen
   onboarded: false,
 };
 
