@@ -387,3 +387,4 @@ kbd { background: var(--bg2); border-radius: 6px; padding: 1px 6px; font-family:
   .hero .snail-big { font-size: 4.4rem; bottom: -10px; }
   main { padding: 12px 14px; }
 }
+main:focus, main:focus-visible { outline: none; }

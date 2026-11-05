@@ -23,7 +23,8 @@ function overview(root) {
         <div><div class="big" style="font-size:1.8rem;color:var(--blue)">${st.total}</div><div class="small muted">in je kaarten</div></div>
         <div><div class="big" style="font-size:1.8rem;color:var(--green)">${st.learned}</div><div class="small muted">goed gekend</div></div>
       </div>
-      <a class="btn block ${st.due ? 'green' : 'ghost'}" href="#/woorden/herhaal" style="margin-top:14px">${st.due ? `▶️ Herhaal ${st.due} kaarten` : '✅ Alles herhaald! (oefen toch)'}</a>
+      ${st.total ? `<a class="btn block ${st.due ? 'green' : 'ghost'}" href="#/woorden/herhaal" style="margin-top:14px">${st.due ? `▶️ Herhaal ${st.due} kaarten` : '✅ Alles herhaald! (oefen toch)'}</a>`
+        : '<p class="small muted center" style="margin:14px 0 0">👇 Nog geen kaarten. Kies hieronder een woordenset en tik op "Leer deze set".</p>'}
     </div>
     <div class="card small muted">
       💡 <b>Hoe werkt het?</b> Kies hieronder een set en tik op "Leer deze set". De woorden komen dan in je flashcards.
