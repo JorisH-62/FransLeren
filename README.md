@@ -30,7 +30,7 @@ Je voortgang wordt per apparaat bewaard. Via **Profiel → Back-up** zet je hem 
 | 👨‍👩‍👧 **Mijn familie** | Voer je eigen familie in en oefen zinnen over hen |
 | 📖 **Zinnenboek** | Kant-en-klare zinnen per situatie |
 | 🔤 **Werkwoorden** | Vervoegingstabellen (6 tijden) en een trainer |
-| 🤪 **Uitdrukkingen** | 40 grappige Franse gezegdes |
+| 🤪 **Uitdrukkingen** | 58 grappige Franse gezegdes |
 | 👄 **Uitspraak** | Klanken, minimale paren en tongbrekers |
 | 📝 **Spiekbriefje** | Alle belangrijke regels op één pagina |
 | 🎯 **Fouten oefenen** | Alles wat je fout had komt terug |
