@@ -3,6 +3,7 @@ import * as srs from '../srs.js';
 import { esc, dayIndex } from '../util.js';
 import { LESSONS } from '../data/lessons.js';
 import { speakBtn } from '../speech.js';
+import { bannerHtml } from '../reminder.js';
 import { PLAN } from '../data/plan.js';
 import { currentWeek, weekProgress } from './plan.js';
 
@@ -67,6 +68,7 @@ export function render(root) {
       <div class="snail-big" aria-hidden="true">🐌</div>
     </div>
 
+    ${bannerHtml()}
     ${sixMonths()}
 
     <div class="card">

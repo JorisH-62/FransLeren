@@ -4,6 +4,7 @@ import { esc, toast, $ } from '../util.js';
 import * as speech from '../speech.js';
 import { BADGES } from '../badges.js';
 import { LESSONS } from '../data/lessons.js';
+import { getReminder, downloadIcs, DAYS } from '../reminder.js';
 
 export function render(root) {
   const s = store.get();
@@ -70,6 +71,15 @@ export function render(root) {
       <label class="row" style="gap:8px"><input type="checkbox" id="sounds" ${s.settings.sounds ? 'checked' : ''}> Geluidseffecten</label>
     </div>
 
+    <h2>🔔 Herinnering</h2>
+    <div class="card stack" id="remcard">
+      <label class="row" style="gap:8px"><input type="checkbox" id="remon"> Herinner me om Frans te oefenen</label>
+      <div class="row wrap" id="remdays" style="gap:6px"></div>
+      <label>Tijd<br><input type="time" id="remtime" class="answer" style="max-width:140px;margin-top:4px"></label>
+      <button class="btn ghost" id="remics">📅 Zet in mijn agenda (met melding)</button>
+      <p class="small muted" style="margin:0">De agenda-afspraak geeft je telefoon een melding op de gekozen dagen, ook als de app dicht is. In de app zelf zie je bovendien een herinnering als je die dag nog niet geleerd hebt.</p>
+    </div>
+
     <h2>💾 Back-up</h2>
     <div class="card stack">
       <p class="small muted" style="margin:0">Je voortgang wordt op dit apparaat bewaard. Wil je wisselen tussen telefoon en computer? Exporteer hier en importeer op het andere apparaat.</p>
@@ -120,6 +130,23 @@ export function render(root) {
   $('#rate', root).onchange = e => { store.setting('rate', +e.target.value); speech.say('Voilà, comme ça.'); };
   $('#theme', root).onchange = e => store.setting('theme', e.target.value);
   $('#sounds', root).onchange = e => store.setting('sounds', e.target.checked);
+
+  // herinnering
+  const rem = getReminder();
+  const saveRem = () => store.setting('reminder', rem);
+  $('#remon', root).checked = rem.on;
+  $('#remtime', root).value = rem.time;
+  $('#remdays', root).innerHTML = DAYS.map(([c, l]) => `<button class="pill" data-day="${c}" style="border:none;cursor:pointer;padding:6px 10px;${rem.days.includes(c) ? 'background:var(--blue);color:#fff' : ''}">${l}</button>`).join('');
+  $('#remon', root).onchange = e => { rem.on = e.target.checked; saveRem(); toast(rem.on ? 'Herinnering aan 🔔' : 'Herinnering uit'); };
+  $('#remtime', root).onchange = e => { rem.time = e.target.value || '20:00'; saveRem(); };
+  $('#remdays', root).onclick = e => {
+    const b = e.target.closest('[data-day]'); if (!b) return;
+    const c = b.dataset.day;
+    rem.days = rem.days.includes(c) ? rem.days.filter(x => x !== c) : [...rem.days, c];
+    if (!rem.days.length) rem.days = [c];
+    saveRem(); render(root);
+  };
+  $('#remics', root).onclick = () => { rem.on = true; saveRem(); downloadIcs(); toast('Open het bestand om de afspraak toe te voegen 📅'); };
 
   $('#export', root).onclick = () => {
     const blob = new Blob([store.exportData()], { type: 'application/json' });
