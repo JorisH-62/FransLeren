@@ -29,6 +29,7 @@ export function render(root) {
       </div>
     </div>
 
+    <a class="card tile" href="#/statistieken" style="flex-direction:row;align-items:center;gap:12px"><span class="te">📊</span><span style="flex:1"><b>Statistieken</b><br><span class="small muted">XP per week en maand, voortgang per niveau, sterk & zwak</span></span><span>›</span></a>
     <div class="card">
       <b>📈 Afgelopen 14 dagen</b>
       <div style="display:flex;align-items:flex-end;gap:4px;height:90px;margin-top:10px" aria-label="XP per dag">
